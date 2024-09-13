@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:quick_glossary/domain/entities/word.dart';
+import 'package:quickglossary/domain/entities/word.dart';
 
 class Helper {
   static int getTimestamp({DateTime date = null}) {

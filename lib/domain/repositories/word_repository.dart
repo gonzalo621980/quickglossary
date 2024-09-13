@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:quick_glossary/core/error/failures.dart';
-import 'package:quick_glossary/domain/entities/word.dart';
+import 'package:quickglossary/core/error/failures.dart';
+import 'package:quickglossary/domain/entities/word.dart';
 
 abstract class WordRepository {
   Future<Either<Failure, List<Word>>> searchWords();

@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'dart:math';
-import 'package:quick_glossary/core/error/failures.dart';
-import 'package:quick_glossary/core/helper.dart';
-import 'package:quick_glossary/domain/entities/word.dart';
-import 'package:quick_glossary/domain/repositories/word_repository.dart';
+import 'package:quickglossary/core/error/failures.dart';
+import 'package:quickglossary/core/helper.dart';
+import 'package:quickglossary/domain/entities/word.dart';
+import 'package:quickglossary/domain/repositories/word_repository.dart';
 
 class SearchWords {
   final WordRepository wordRepository;

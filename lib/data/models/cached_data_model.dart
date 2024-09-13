@@ -1,7 +1,7 @@
 // import 'package:equatable/equatable.dart';
-import 'package:quick_glossary/domain/entities/cached_data.dart';
-import 'package:quick_glossary/domain/entities/word.dart';
-import 'package:quick_glossary/data/models/word_model.dart';
+import 'package:quickglossary/domain/entities/cached_data.dart';
+import 'package:quickglossary/domain/entities/word.dart';
+import 'package:quickglossary/data/models/word_model.dart';
 
 class CachedDataModel {
   static CachedData fromJson(Map<String, dynamic> json) {

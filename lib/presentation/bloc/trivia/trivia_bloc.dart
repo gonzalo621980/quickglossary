@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
-import 'package:quick_glossary/core/enum/enum_state_trivia.dart';
-import 'package:quick_glossary/domain/entities/word.dart';
+import 'package:quickglossary/core/enum/enum_state_trivia.dart';
+import 'package:quickglossary/domain/entities/word.dart';
 import 'package:meta/meta.dart';
-import 'package:quick_glossary/core/error/failures.dart';
-import 'package:quick_glossary/presentation/bloc/trivia/trivia_event.dart';
-import 'package:quick_glossary/presentation/bloc/trivia/trivia_state.dart';
-import 'package:quick_glossary/domain/usecases/word_usecase.dart';
+import 'package:quickglossary/core/error/failures.dart';
+import 'package:quickglossary/presentation/bloc/trivia/trivia_event.dart';
+import 'package:quickglossary/presentation/bloc/trivia/trivia_state.dart';
+import 'package:quickglossary/domain/usecases/word_usecase.dart';
 
 class TriviaBloc extends Bloc<TriviaEvent, TriviaState> {
   final PickWord pickWord;

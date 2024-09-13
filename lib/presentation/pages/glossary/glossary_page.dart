@@ -1,17 +1,17 @@
-import 'package:quick_glossary/core/enum/enum_color.dart';
-import 'package:quick_glossary/core/helper.dart';
-import 'package:quick_glossary/domain/entities/word.dart';
-import 'package:quick_glossary/presentation/pages/home/home_page.dart';
-import 'package:quick_glossary/presentation/widgets/card_cabecera.dart';
-import 'package:quick_glossary/presentation/widgets/floating_button_widget.dart';
-import 'package:quick_glossary/presentation/widgets/form_input_image_widget.dart';
+import 'package:quickglossary/core/enum/enum_color.dart';
+import 'package:quickglossary/core/helper.dart';
+import 'package:quickglossary/domain/entities/word.dart';
+import 'package:quickglossary/presentation/pages/home/home_page.dart';
+import 'package:quickglossary/presentation/widgets/card_cabecera.dart';
+import 'package:quickglossary/presentation/widgets/floating_button_widget.dart';
+import 'package:quickglossary/presentation/widgets/form_input_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quick_glossary/presentation/widgets/msj_confirmacion.dart';
-import 'package:quick_glossary/presentation/bloc/glossary/bloc.dart';
-import 'package:quick_glossary/presentation/widgets/loading_widget.dart';
-import 'package:quick_glossary/injection_container.dart';
+import 'package:quickglossary/presentation/widgets/msj_confirmacion.dart';
+import 'package:quickglossary/presentation/bloc/glossary/bloc.dart';
+import 'package:quickglossary/presentation/widgets/loading_widget.dart';
+import 'package:quickglossary/injection_container.dart';
 
 class GlossaryPage extends StatefulWidget {
   final AssetImage backgroundImage = new AssetImage("assets/images/background.png");

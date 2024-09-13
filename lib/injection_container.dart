@@ -1,12 +1,12 @@
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:quick_glossary/data/repositories/word_repository_local.dart';
-import 'package:quick_glossary/domain/repositories/word_repository.dart';
-import 'package:quick_glossary/domain/usecases/word_usecase.dart';
-import 'package:quick_glossary/presentation/bloc/home/bloc.dart';
-import 'package:quick_glossary/presentation/bloc/glossary/bloc.dart';
-import 'package:quick_glossary/presentation/bloc/trivia/bloc.dart';
+import 'package:quickglossary/data/repositories/word_repository_local.dart';
+import 'package:quickglossary/domain/repositories/word_repository.dart';
+import 'package:quickglossary/domain/usecases/word_usecase.dart';
+import 'package:quickglossary/presentation/bloc/home/bloc.dart';
+import 'package:quickglossary/presentation/bloc/glossary/bloc.dart';
+import 'package:quickglossary/presentation/bloc/trivia/bloc.dart';
 import 'data/datasources/local_data_source.dart';
 
 final sl = GetIt.instance;

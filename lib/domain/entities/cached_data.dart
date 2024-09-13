@@ -1,4 +1,4 @@
-import 'package:quick_glossary/domain/entities/word.dart';
+import 'package:quickglossary/domain/entities/word.dart';
 
 class CachedData {
   List<Word> listWords;

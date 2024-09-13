@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quick_glossary/domain/entities/word.dart';
+import 'package:quickglossary/domain/entities/word.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 

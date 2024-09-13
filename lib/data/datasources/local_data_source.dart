@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:quick_glossary/data/models/cached_data_model.dart';
-import 'package:quick_glossary/domain/entities/cached_data.dart';
+import 'package:quickglossary/data/models/cached_data_model.dart';
+import 'package:quickglossary/domain/entities/cached_data.dart';
 
 abstract class LocalDataSource {
   Future<CachedData> getData();

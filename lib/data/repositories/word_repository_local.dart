@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
-import 'package:quick_glossary/core/error/exception.dart';
-import 'package:quick_glossary/core/error/failures.dart';
-import 'package:quick_glossary/data/datasources/local_data_source.dart';
-import 'package:quick_glossary/domain/repositories/word_repository.dart';
-import 'package:quick_glossary/domain/entities/cached_data.dart';
-import 'package:quick_glossary/domain/entities/word.dart';
+import 'package:quickglossary/core/error/exception.dart';
+import 'package:quickglossary/core/error/failures.dart';
+import 'package:quickglossary/data/datasources/local_data_source.dart';
+import 'package:quickglossary/domain/repositories/word_repository.dart';
+import 'package:quickglossary/domain/entities/cached_data.dart';
+import 'package:quickglossary/domain/entities/word.dart';
 import 'package:uuid/uuid.dart';
 
 class WordRepositoryLocal extends WordRepository {

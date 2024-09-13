@@ -1,4 +1,4 @@
-import 'package:quick_glossary/presentation/pages/home/home_page.dart';
+import 'package:quickglossary/presentation/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'injection_container.dart' as di;
 

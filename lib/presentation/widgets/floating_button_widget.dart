@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:quick_glossary/domain/entities/word.dart';
+import 'package:quickglossary/domain/entities/word.dart';
 
 class FloatingButtonWidget extends StatelessWidget {
   final Color iconColor;

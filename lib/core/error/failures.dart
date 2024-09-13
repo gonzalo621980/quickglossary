@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:quick_glossary/domain/entities/word.dart';
+import 'package:quickglossary/domain/entities/word.dart';
 
 abstract class Failure extends Equatable {
   Failure([List properties = const <dynamic>[]]) : super(properties);

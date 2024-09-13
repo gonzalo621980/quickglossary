@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:quick_glossary/domain/entities/word.dart';
+import 'package:quickglossary/domain/entities/word.dart';
 import 'package:meta/meta.dart';
-import 'package:quick_glossary/core/error/failures.dart';
-import 'package:quick_glossary/presentation/bloc/glossary/glossary_event.dart';
-import 'package:quick_glossary/presentation/bloc/glossary/glossary_state.dart';
-import 'package:quick_glossary/domain/usecases/word_usecase.dart';
+import 'package:quickglossary/core/error/failures.dart';
+import 'package:quickglossary/presentation/bloc/glossary/glossary_event.dart';
+import 'package:quickglossary/presentation/bloc/glossary/glossary_state.dart';
+import 'package:quickglossary/domain/usecases/word_usecase.dart';
 
 class GlossaryBloc extends Bloc<GlossaryEvent, GlossaryState> {
   final SearchWords searchWords;

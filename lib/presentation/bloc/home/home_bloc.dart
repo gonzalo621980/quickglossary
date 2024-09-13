@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:quick_glossary/core/error/failures.dart';
-import 'package:quick_glossary/presentation/bloc/home/home_event.dart';
-import 'package:quick_glossary/presentation/bloc/home/home_state.dart';
-import 'package:quick_glossary/domain/usecases/word_usecase.dart';
+import 'package:quickglossary/core/error/failures.dart';
+import 'package:quickglossary/presentation/bloc/home/home_event.dart';
+import 'package:quickglossary/presentation/bloc/home/home_state.dart';
+import 'package:quickglossary/domain/usecases/word_usecase.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final SearchWords searchWords;
