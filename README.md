@@ -1,0 +1,2 @@
+# quickglossary
+Smart english glossary
