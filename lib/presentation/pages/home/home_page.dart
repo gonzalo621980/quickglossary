@@ -219,7 +219,7 @@ class _HomePageState extends State<HomePage> {
     FilePickerResult result = await FilePicker.platform.pickFiles(dialogTitle: "Import backup");
     if (result == null) {
       print("Path is empty.");
-      BlocProvider.of<HomeBloc>(this.contextPage).add(GetImport(this.fileContent));
+      BlocProvider.of<HomeBloc>(this.contextPage).add(GetReload());
       return;
     }
 
@@ -232,7 +232,7 @@ class _HomePageState extends State<HomePage> {
       }
     } catch (e) {
       print("Failed to read file: '${e.message}'.");
-      BlocProvider.of<HomeBloc>(this.contextPage).add(GetImport(this.fileContent));
+      BlocProvider.of<HomeBloc>(this.contextPage).add(GetReload());
       return;
     }
   }
@@ -247,7 +247,7 @@ class _HomePageState extends State<HomePage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))));
     if (result == null) {
       print("Path is empty.");
-      BlocProvider.of<HomeBloc>(this.contextPage).add(GetImport(this.fileContent));
+      BlocProvider.of<HomeBloc>(this.contextPage).add(GetReload());
       return;
     }
 
@@ -261,7 +261,7 @@ class _HomePageState extends State<HomePage> {
       BlocProvider.of<HomeBloc>(this.contextPage).add(GetReload());
     } catch (e) {
       print("Failed to write file: '${e.message}'.");
-      BlocProvider.of<HomeBloc>(this.contextPage).add(GetImport(this.fileContent));
+      BlocProvider.of<HomeBloc>(this.contextPage).add(GetReload());
       return;
     }
   }
