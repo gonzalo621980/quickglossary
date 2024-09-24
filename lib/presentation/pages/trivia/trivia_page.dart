@@ -48,55 +48,58 @@ class _TriviaPageState extends State<TriviaPage> {
           ),
           child: BlocProvider<TriviaBloc>(
             create: (_) => sl<TriviaBloc>(),
-            child: BlocConsumer<TriviaBloc, TriviaState>(listener: (context, state) {
-              this.contextPage = context;
+            child: BlocConsumer<TriviaBloc, TriviaState>(
+              listener: (context, state) {
+                this.contextPage = context;
 
-              if (state is GoToHome) {
-                Navigator.of(this.contextPage).pop();
-                final route = MaterialPageRoute(builder: (context) => HomePage());
-                Navigator.of(this.contextPage).push(route);
-              } else if (state is Loaded) {
-                this.word = state.word;
-                if (state.stateTrivia == EnumStateTrivia.SUCCESS)
-                  this.successCounter++;
-                else if (state.stateTrivia == EnumStateTrivia.FAILED) this.successCounter = 0;
-                if (state.stateTrivia == EnumStateTrivia.WAITING) this.word.spanishText = "";
-              }
-            }, builder: (context, state) {
-              this.contextPage = context;
-              if (state is Empty) {
-                BlocProvider.of<TriviaBloc>(this.contextPage).add(GetReload(word: new Word()));
-                return SizedBox(height: 0);
-              } else if (state is Loading) {
-                return LoadingWidget();
-              } else if (state is Loaded) {
-                return _getControles(word: this.word, stateTrivia: state.stateTrivia);
-              } else if (state is Invalid) {
-                Color colorFont = Colors.grey;
-                if (state.code == "UNKNOWN_WORD") {
-                  colorFont = Colors.red;
+                if (state is GoToHome) {
+                  Navigator.of(this.contextPage).pop();
+                  final route = MaterialPageRoute(builder: (context) => HomePage());
+                  Navigator.of(this.contextPage).push(route);
+                } else if (state is Loaded) {
                   this.word = state.word;
-                  return _getControles(word: this.word, stateTrivia: EnumStateTrivia.FAILED);
+                  if (state.stateTrivia == EnumStateTrivia.SUCCESS)
+                    this.successCounter++;
+                  else if (state.stateTrivia == EnumStateTrivia.FAILED) this.successCounter = 0;
+                  if (state.stateTrivia == EnumStateTrivia.WAITING) this.word.spanishText = "";
                 }
-                //muestro mensaje de validacion y reacargo la pantalla
-                return MsjConfirmacion(
-                    titulo: "Aviso",
-                    mensaje: state.message,
-                    onAceptar: (BuildContext context, String data) {
-                      BlocProvider.of<TriviaBloc>(this.contextPage).add(GetReload(word: state.word));
-                    });
-              } else if (state is Error) {
-                //muestro mensaje de error y reacargo la pantalla
-                return MsjConfirmacion(
-                    titulo: "Error",
-                    mensaje: state.message,
-                    onAceptar: (BuildContext context, String data) {
-                      BlocProvider.of<TriviaBloc>(this.contextPage).add(GetReload(word: new Word()));
-                    });
-              } else {
-                return SizedBox(height: 0);
-              }
-            }),
+              },
+              builder: (context, state) {
+                this.contextPage = context;
+                if (state is Empty) {
+                  BlocProvider.of<TriviaBloc>(this.contextPage).add(GetReload(word: new Word()));
+                  return SizedBox(height: 0);
+                } else if (state is Loading) {
+                  return LoadingWidget();
+                } else if (state is Loaded) {
+                  return _getControles(word: this.word, stateTrivia: state.stateTrivia);
+                } else if (state is Invalid) {
+                  Color colorFont = Colors.grey;
+                  if (state.code == "UNKNOWN_WORD") {
+                    colorFont = Colors.red;
+                    this.word = state.word;
+                    return _getControles(word: this.word, stateTrivia: EnumStateTrivia.FAILED);
+                  }
+                  //muestro mensaje de validacion y reacargo la pantalla
+                  return MsjConfirmacion(
+                      titulo: "Aviso",
+                      mensaje: state.message,
+                      onAceptar: (BuildContext context, String data) {
+                        BlocProvider.of<TriviaBloc>(this.contextPage).add(GetReload(word: state.word));
+                      });
+                } else if (state is Error) {
+                  //muestro mensaje de error y reacargo la pantalla
+                  return MsjConfirmacion(
+                      titulo: "Error",
+                      mensaje: state.message,
+                      onAceptar: (BuildContext context, String data) {
+                        BlocProvider.of<TriviaBloc>(this.contextPage).add(GetReload(word: new Word()));
+                      });
+                } else {
+                  return SizedBox(height: 0);
+                }
+              },
+            ),
           ),
         ));
   }
@@ -188,6 +191,7 @@ class _TriviaPageState extends State<TriviaPage> {
                 ? EnumColor.successColor
                 : EnumColor.failedColor,
         isEnabled: (stateTrivia == EnumStateTrivia.WAITING),
+        isFocused: (stateTrivia == EnumStateTrivia.WAITING),
         onChanged: (value) => {this.word.spanishText = value});
   }
 

@@ -3,10 +3,12 @@ import 'package:flutter/rendering.dart';
 
 class FormInputImageWidget extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
   final IconData icon;
   final String initValue;
   final String hint;
   final bool isEnabled;
+  final bool isFocused;
   final bool isPassword;
   final bool multiline;
   final Color colorFont;
@@ -17,6 +19,7 @@ class FormInputImageWidget extends StatelessWidget {
       this.initValue = '',
       this.hint = '',
       this.isEnabled = true,
+      this.isFocused = false,
       this.isPassword = false,
       this.multiline = false,
       this.colorFont = Colors.black,
@@ -31,6 +34,10 @@ class FormInputImageWidget extends StatelessWidget {
       _controller.selection = TextSelection.fromPosition(
         TextPosition(offset: _controller.text.length),
       );
+    }
+
+    if (this.isFocused) {
+      FocusScope.of(context).requestFocus(_focusNode);
     }
 
     return Container(
@@ -60,6 +67,7 @@ class FormInputImageWidget extends StatelessWidget {
           new Expanded(
             child: TextField(
               controller: _controller,
+              focusNode: _focusNode,
               style: TextStyle(color: this.colorFont, fontSize: 21.0),
               decoration: InputDecoration(
                   border: InputBorder.none, hintText: this.hint, hintStyle: TextStyle(color: Colors.grey)),
