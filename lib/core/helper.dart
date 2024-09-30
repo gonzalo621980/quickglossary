@@ -38,7 +38,11 @@ class Helper {
     int today = Helper.getTimestamp();
     int createDays = (today - word.createDate) ~/ (60 / 60 / 24);
     int modifyDays = (today - word.modifyDate) ~/ (60 / 60 / 24);
-    int level = word.failureCount == 0 ? 100 : (word.successCount * 100) ~/ word.failureCount;
+    int level = word.failureCount == 0
+        ? 100
+        : word.successCount == 0
+            ? 0
+            : (100 * (word.successCount - word.failureCount) / word.successCount).truncate().toInt();
 
     int scoreCreateDays = createDays < 1
         ? 10

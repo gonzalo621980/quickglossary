@@ -67,7 +67,7 @@ class FormInputImageWidget extends StatelessWidget {
           new Expanded(
             child: TextField(
               controller: _controller,
-              focusNode: _focusNode,
+              focusNode: this.isFocused ? _focusNode : null,
               style: TextStyle(color: this.colorFont, fontSize: 21.0),
               decoration: InputDecoration(
                   border: InputBorder.none, hintText: this.hint, hintStyle: TextStyle(color: Colors.grey)),
