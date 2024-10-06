@@ -33,16 +33,23 @@ class Helper {
     return value;
   }
 
+  static int positiveOrZero(int a) {
+    if (a < 0) {
+      return 0;
+    }
+    return a;
+  }
+
   static int getScore(Word word) {
     int score = 1;
     int today = Helper.getTimestamp();
     int createDays = (today - word.createDate) ~/ (60 / 60 / 24);
     int modifyDays = (today - word.modifyDate) ~/ (60 / 60 / 24);
-    int level = word.failureCount == 0
-        ? 100
-        : word.successCount == 0
-            ? 0
-            : (100 * (word.successCount - word.failureCount) / word.successCount).truncate().toInt();
+    int level = word.successCount == 0
+        ? 0
+        : word.failureCount == 0
+            ? 10
+            : (10 * positiveOrZero(word.successCount - word.failureCount) / word.successCount).truncate().toInt();
 
     int scoreCreateDays = createDays < 1
         ? 10
@@ -65,13 +72,13 @@ class Helper {
     int scoreContinuousSuccessCount = word.continuousSuccessCount == 0
         ? 50
         : word.continuousSuccessCount < 5
-            ? 25
+            ? 10
             : word.continuousSuccessCount < 10
-                ? 10
+                ? 5
                 : 0;
-    int scoreSuccess = 50 * (100 - level);
+    int scoreSuccess = 2 * (10 - level);
 
-    score += (scoreCreateDays + scoreModifyDays + scoreContinuousSuccessCount + scoreSuccess);
+    score += (scoreCreateDays + scoreModifyDays + scoreContinuousSuccessCount + scoreSuccess + 1);
 
     return score;
   }
