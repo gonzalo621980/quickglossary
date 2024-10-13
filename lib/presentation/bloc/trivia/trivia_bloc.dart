@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:quickglossary/core/enum/enum_state_trivia.dart';
-import 'package:quickglossary/domain/entities/word.dart';
 import 'package:meta/meta.dart';
 import 'package:quickglossary/core/error/failures.dart';
 import 'package:quickglossary/presentation/bloc/trivia/trivia_event.dart';
@@ -10,8 +9,9 @@ import 'package:quickglossary/domain/usecases/word_usecase.dart';
 class TriviaBloc extends Bloc<TriviaEvent, TriviaState> {
   final PickWord pickWord;
   final TestWord testWord;
+  final ReadWord readWord;
 
-  TriviaBloc({@required this.pickWord, @required this.testWord});
+  TriviaBloc({@required this.pickWord, @required this.testWord, @required this.readWord});
 
   @override
   TriviaState get initialState {
@@ -35,10 +35,18 @@ class TriviaBloc extends Bloc<TriviaEvent, TriviaState> {
     } else if (event is GetTest) {
       yield Loading();
 
-      final failureOrWords = await testWord.call(event.word);
-      yield failureOrWords.fold(
+      final failureOrResult = await testWord.call(event.word);
+      yield failureOrResult.fold(
         (failure) => _mapFailureToState(failure),
         (result) => Loaded(word: event.word, stateTrivia: (result) ? EnumStateTrivia.SUCCESS : EnumStateTrivia.FAILED),
+      );
+    } else if (event is GetRead) {
+      yield Loading();
+
+      final failureOrWord = await readWord.call(event.word);
+      yield failureOrWord.fold(
+        (failure) => _mapFailureToState(failure),
+        (word) => Loaded(word: word, stateTrivia: EnumStateTrivia.REVIEW),
       );
     }
   }

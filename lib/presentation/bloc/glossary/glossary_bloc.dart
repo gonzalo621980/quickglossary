@@ -29,8 +29,8 @@ class GlossaryBloc extends Bloc<GlossaryEvent, GlossaryState> {
     } else if (event is GetRead) {
       yield Loading();
 
-      final failureOrWords = await readWord.call(event.word);
-      yield failureOrWords.fold(
+      final failureOrWord = await readWord.call(event.word);
+      yield failureOrWord.fold(
         (failure) => _mapFailureToState(failure),
         (word) => Loaded(word: word),
       );

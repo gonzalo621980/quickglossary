@@ -6,4 +6,5 @@ class EnumColor {
   static const Color backgroundColor = Colors.white;
   static const Color successColor = Colors.green;
   static const Color failedColor = Colors.red;
+  static const Color reviewColor = Colors.blue;
 }

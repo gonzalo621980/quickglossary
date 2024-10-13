@@ -15,7 +15,7 @@ Future<void> init() async {
   // Bloc
   sl.registerFactory(() => HomeBloc(searchWords: sl(), import: sl(), export: sl()));
   sl.registerFactory(() => GlossaryBloc(searchWords: sl(), readWord: sl(), writeWord: sl(), deleteWord: sl()));
-  sl.registerFactory(() => TriviaBloc(pickWord: sl(), testWord: sl()));
+  sl.registerFactory(() => TriviaBloc(pickWord: sl(), testWord: sl(), readWord: sl()));
 
   // Use cases
   sl.registerLazySingleton(() => SearchWords(sl()));

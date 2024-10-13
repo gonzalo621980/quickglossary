@@ -1,1 +1,1 @@
-enum EnumStateTrivia { WAITING, FAILED, SUCCESS }
+enum EnumStateTrivia { WAITING, FAILED, SUCCESS, REVIEW }

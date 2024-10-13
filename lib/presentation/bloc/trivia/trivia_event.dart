@@ -30,6 +30,15 @@ class GetTest extends TriviaEvent {
   List<Object> get props => [word];
 }
 
+class GetRead extends TriviaEvent {
+  final Word word;
+
+  GetRead({this.word}) : super([word]);
+
+  @override
+  List<Object> get props => [word];
+}
+
 class GetReload extends TriviaEvent {
   final Word word;
 

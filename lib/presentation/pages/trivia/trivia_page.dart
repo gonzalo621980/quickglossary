@@ -60,8 +60,11 @@ class _TriviaPageState extends State<TriviaPage> {
                   this.word = state.word;
                   if (state.stateTrivia == EnumStateTrivia.SUCCESS)
                     this.successCounter++;
-                  else if (state.stateTrivia == EnumStateTrivia.FAILED) this.successCounter = 0;
-                  if (state.stateTrivia == EnumStateTrivia.WAITING) this.word.spanishText = "";
+                  else if (state.stateTrivia == EnumStateTrivia.FAILED)
+                    this.successCounter = 0;
+                  else if (state.stateTrivia == EnumStateTrivia.WAITING)
+                    this.word.spanishText = "";
+                  else if (state.stateTrivia == EnumStateTrivia.REVIEW) this.successCounter = 0;
                 }
               },
               builder: (context, state) {
@@ -118,7 +121,13 @@ class _TriviaPageState extends State<TriviaPage> {
       Container(
           padding: const EdgeInsets.only(left: 20.0, right: 20.0),
           child: Row(
-            children: [buttonHome(), SizedBox(width: 100), buttonTest(stateTrivia), buttonPick()],
+            children: [
+              buttonHome(),
+              SizedBox(width: 100),
+              buttonTest(stateTrivia),
+              buttonRead(stateTrivia),
+              buttonPick()
+            ],
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
           ))
     ]);
@@ -163,6 +172,21 @@ class _TriviaPageState extends State<TriviaPage> {
         });
   }
 
+  Widget buttonRead(stateTrivia) {
+    return (stateTrivia == EnumStateTrivia.WAITING || stateTrivia == EnumStateTrivia.FAILED)
+        ? FloatingButtonWidget(
+            icon: Icons.search,
+            iconColor: Colors.white,
+            backgroundColor: EnumColor.secondaryColor,
+            contextParent: this.contextPage,
+            word: this.word,
+            onClickAction: (context, word) {
+              BlocProvider.of<TriviaBloc>(context)
+                  .add(GetRead(word: new Word(englishText: word.englishText, category: word.category)));
+            })
+        : SizedBox(height: 10);
+  }
+
   Widget titleWords(int successCounter) {
     return CardCabecera(
         titulo: "Trivia",
@@ -189,7 +213,11 @@ class _TriviaPageState extends State<TriviaPage> {
             ? Colors.black
             : stateTrivia == EnumStateTrivia.SUCCESS
                 ? EnumColor.successColor
-                : EnumColor.failedColor,
+                : stateTrivia == EnumStateTrivia.FAILED
+                    ? EnumColor.failedColor
+                    : stateTrivia == EnumStateTrivia.REVIEW
+                        ? EnumColor.reviewColor
+                        : EnumColor.primaryColor,
         isEnabled: (stateTrivia == EnumStateTrivia.WAITING),
         isFocused: (stateTrivia == EnumStateTrivia.WAITING),
         onChanged: (value) => {this.word.spanishText = value});
